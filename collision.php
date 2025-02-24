@@ -79,7 +79,6 @@ $square = [
     [1,0,1],
     [1,1,1]
 ];
-$allowCollisions = true;
 
 $plane = new Plane();
 $plane->allowCollisions();
@@ -91,7 +90,8 @@ $plane->place($crossShape, 0, 0); // first shape, OK - no collision
 $plane->place($squareShape, 2, 2); // second shape, OK - no collision, touch, but no overlap
 $plane->place($squareShape, 4, 4); // third shape - collision with previous square on [4,4]
 
-/*   [0][1][2][3][4][5][6]
+/*
+ *    [0][1][2][3][4][5][6]
  *[0]    1
  *[1] 1  1  1
  *[2]    1  2  2  2
@@ -99,6 +99,7 @@ $plane->place($squareShape, 4, 4); // third shape - collision with previous squa
  *[4]       2  2  3  3  3
  *[5]             3     3
  *[6]             3  3  3
+ *
  */
-$plane->reportCollisions();
 
+$plane->reportCollisions();
