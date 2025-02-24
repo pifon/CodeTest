@@ -27,7 +27,7 @@ class Plane
                 if ($mark) {
                     if (!empty($this->planeMap[$rowX][$colY])) {
                         if (!$this->collisionsAllowed) {
-                            sprintf("Cannot place shape #%d - collision with shape #%d at [%d, %d]", $point, $this->planeMap[$rowX][$colY], $rowX, $colY);
+                            echo sprintf("Cannot place shape #%d - collision with shape #%d at [%d, %d]", $point, $this->planeMap[$rowX][$colY], $rowX, $colY)."\n";
                             return;
                         }
                         $this->collisions[] = [
@@ -86,7 +86,7 @@ $square = [
 ];
 
 $plane = new Plane();
-$plane->allowCollisions();
+//$plane->allowCollisions();
 
 $crossShape = new Shape($cross);
 $squareShape = new Shape($square);
