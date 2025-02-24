@@ -5,6 +5,7 @@ declare(strict_types=1);
 class Plane
 {
     private array $planeMap = [];
+
     private array $items = [];
 
     private array $collisions = [];
