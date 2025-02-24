@@ -19,8 +19,7 @@ class Plane
 
     public function place(Shape $shape, int $rowX, int $columnY): void
     {
-        $point = count($this->items);
-        $point++;
+        $point = count($this->items) + 1;
 
         foreach ($shape->getSprite() as $row) {
             $colY = $columnY;
@@ -28,7 +27,7 @@ class Plane
                 if ($mark) {
                     if (!empty($this->planeMap[$rowX][$colY])) {
                         if (!$this->collisionsAllowed) {
-                            print("Cannot place shape #$point it collides with shape #{$this->planeMap[$rowX][$colY]}\n");
+                            sprintf("Cannot place shape #%d - collision with shape #%d at [%d, %d]", $point, $this->planeMap[$rowX][$colY], $rowX, $colY);
                             return;
                         }
                         $this->collisions[] = [
@@ -53,6 +52,12 @@ class Plane
            echo "No collisions allowed\n";
            return;
         }
+
+        if (empty($this->collisions)) {
+            echo "No collisions detected.\n";
+            return;
+        }
+
         echo "Collisions: \n" . print_r($this->collisions, true)."\n";
     }
 
@@ -60,7 +65,7 @@ class Plane
 
 readonly class Shape
 {
-    public function __construct(private Array $sprite){
+    public function __construct(private array $sprite){
     }
 
     public function getSprite(): array
