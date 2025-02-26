@@ -128,7 +128,7 @@ class Shape
     }
 
     /**
-     * SAT (Separating Axis Theorem) Collision Detection
+     * SAT (c) Collision Detection
      */
     public static function doPolygonsCollide(array $polygon1, array $polygon2): bool
     {
